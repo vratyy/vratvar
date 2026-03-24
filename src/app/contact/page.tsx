@@ -135,7 +135,7 @@ export default function ContactPage() {
   }, [state.status]);
 
   return (
-    <main className="min-h-screen bg-zinc-50">
+    <main className="min-h-screen bg-zinc-50 overflow-x-hidden">
       {/* Ambient background */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-0 left-1/4 w-[600px] h-[400px] rounded-full bg-yellow-300/[0.07] blur-[120px]" />

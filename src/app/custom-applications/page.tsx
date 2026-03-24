@@ -13,6 +13,20 @@ import { useLanguage } from "@/context/LanguageContext";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
+const HOVER_MAP: Record<string, string> = {
+  "text-violet-400": "from-violet-400/[0.06] to-transparent",
+  "text-sky-400":    "from-sky-400/[0.06] to-transparent",
+  "text-amber-400":  "from-amber-400/[0.06] to-transparent",
+  "text-emerald-400":"from-emerald-400/[0.06] to-transparent",
+};
+
+const DOT_MAP: Record<string, string> = {
+  "text-violet-400": "bg-violet-400",
+  "text-sky-400":    "bg-sky-400",
+  "text-amber-400":  "bg-amber-400",
+  "text-emerald-400":"bg-emerald-400",
+};
+
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
   animate: { opacity: 1, y: 0 },
@@ -235,7 +249,7 @@ export default function CustomApplicationsPage() {
   const process = lang === "cz" ? PROCESS_CZ : PROCESS;
   const principles = lang === "cz" ? PRINCIPLES_CZ : PRINCIPLES;
   return (
-    <main className="min-h-screen bg-zinc-50">
+    <main className="min-h-screen bg-zinc-50 overflow-x-hidden">
       {/* ── Hero ── */}
       <section className="relative pt-32 pb-24 px-6 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
@@ -356,22 +370,29 @@ export default function CustomApplicationsPage() {
             {serviceTypes.map((s, i) => {
               const Icon = s.icon;
               return (
-                <motion.div key={s.title} {...fadeUp(i * 0.08)}>
-                  <Tilt tiltMaxAngleX={6} tiltMaxAngleY={6} perspective={1000} scale={1.02} transitionSpeed={500} glareEnable={true} glareMaxOpacity={0.07} glareColor="#facc15" glarePosition="all" className="h-full">
-                  <div className={`bg-gradient-to-br ${s.bg} border ${s.border} rounded-3xl p-7 h-full relative overflow-hidden`} style={{ transformStyle: "preserve-3d" }}>
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-[2px] rounded-full bg-gradient-to-r from-yellow-400 to-amber-500" />
-                    <div className="flex items-center gap-3 mb-5" style={{ transform: "translateZ(8px)" }}>
-                      <div className="w-10 h-10 rounded-xl bg-zinc-800 border border-zinc-700 flex items-center justify-center">
+                <motion.div key={s.title} {...fadeUp(i * 0.08)} className="h-full">
+                  <Tilt tiltMaxAngleX={8} tiltMaxAngleY={8} perspective={900} scale={1.02} transitionSpeed={450} glareEnable={true} glareMaxOpacity={0.07} glareColor="#facc15" glarePosition="all" className="h-full">
+                  <div className="relative bg-zinc-900 border border-zinc-800 rounded-2xl p-8 flex flex-col h-full overflow-hidden group hover:border-zinc-700 hover:shadow-[0_24px_64px_rgba(0,0,0,0.5)] transition-all duration-500" style={{ transformStyle: "preserve-3d" }}>
+                    <div className={`absolute inset-0 bg-gradient-to-br ${HOVER_MAP[s.accent] ?? "from-yellow-400/[0.06] to-transparent"} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl`} />
+                    <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                    <span className="absolute -bottom-4 -right-2 font-calsans text-[120px] leading-none font-extrabold text-white/[0.03] select-none pointer-events-none group-hover:text-white/[0.05] transition-colors duration-500" aria-hidden="true">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div className="flex items-center justify-between mb-10">
+                      <div className="w-12 h-12 rounded-2xl bg-zinc-800 border border-zinc-700/60 flex items-center justify-center group-hover:border-zinc-600 transition-colors duration-300">
                         <Icon className={`w-5 h-5 ${s.accent}`} />
                       </div>
-                      <h3 className="font-calsans font-bold text-white">{s.title}</h3>
+                      <span className="text-[11px] font-mono font-semibold text-zinc-600 tracking-[0.2em] group-hover:text-zinc-500 transition-colors duration-300">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
                     </div>
-                    <p className="text-zinc-400 text-sm leading-relaxed mb-5" style={{ transform: "translateZ(4px)" }}>{s.desc}</p>
-                    <ul className="space-y-2" style={{ transform: "translateZ(4px)" }}>
-                      {s.examples.map((ex) => (
-                        <li key={ex} className="flex items-center gap-2">
-                          <CheckCircle2 className={`w-3.5 h-3.5 flex-shrink-0 ${s.accent}`} />
-                          <span className="text-zinc-300 text-xs">{ex}</span>
+                    <h3 className="font-calsans text-2xl text-white mb-3 leading-tight">{s.title}</h3>
+                    <p className="text-zinc-400 text-sm leading-relaxed mb-6 flex-1">{s.desc}</p>
+                    <ul className="space-y-2">
+                      {s.examples.map((ex, j) => (
+                        <li key={j} className="flex items-center gap-2 text-xs text-zinc-500">
+                          <span className={`w-1 h-1 rounded-full flex-shrink-0 ${DOT_MAP[s.accent] ?? "bg-yellow-400"}`} />
+                          {ex}
                         </li>
                       ))}
                     </ul>
@@ -402,35 +423,25 @@ export default function CustomApplicationsPage() {
             {process.map((step, i) => {
               const Icon = step.icon;
               return (
-                <motion.div key={step.num} {...fadeUp(i * 0.1)}>
-                  <Tilt tiltMaxAngleX={8} tiltMaxAngleY={8} perspective={800} scale={1.03} transitionSpeed={400} glareEnable={true} glareMaxOpacity={0.18} glareColor="#ffffff" glarePosition="top" className="h-full">
-                  <div
-                    className="relative rounded-2xl p-6 h-full overflow-hidden"
-                    style={{
-                      transformStyle: "preserve-3d",
-                      background: "linear-gradient(145deg, rgba(255,255,255,0.82) 0%, rgba(255,255,255,0.52) 100%)",
-                      backdropFilter: "blur(24px)",
-                      WebkitBackdropFilter: "blur(24px)",
-                      border: "1px solid rgba(255,255,255,0.75)",
-                      boxShadow: "0 8px 32px rgba(0,0,0,0.07), 0 1.5px 6px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.95), inset 0 -1px 0 rgba(0,0,0,0.03)",
-                    }}
-                  >
-                    {/* Yellow top accent */}
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-14 h-[2px] rounded-full bg-gradient-to-r from-yellow-400 to-amber-500" />
-                    {/* Inner specular shimmer */}
-                    <div className="absolute top-0 left-0 w-3/4 h-px bg-gradient-to-r from-white/90 via-white/60 to-transparent" />
-                    <div className="flex items-start justify-between mb-4" style={{ transform: "translateZ(4px)" }}>
-                      <span className="font-calsans text-3xl font-extrabold text-zinc-200 leading-none">{step.num}</span>
-                      <span className="text-[10px] text-zinc-500 bg-white/60 border border-zinc-200/70 rounded-full px-2.5 py-1 font-medium">{step.duration}</span>
+                <motion.div key={step.num} {...fadeUp(i * 0.1)} className="h-full">
+                  <Tilt tiltMaxAngleX={8} tiltMaxAngleY={8} perspective={900} scale={1.02} transitionSpeed={450} glareEnable={true} glareMaxOpacity={0.07} glareColor="#facc15" glarePosition="all" className="h-full">
+                  <div className="relative bg-zinc-900 border border-zinc-800 rounded-2xl p-8 flex flex-col h-full overflow-hidden group hover:border-zinc-700 hover:shadow-[0_24px_64px_rgba(0,0,0,0.5)] transition-all duration-500" style={{ transformStyle: "preserve-3d" }}>
+                    <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl" />
+                    <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                    <span className="absolute -bottom-4 -right-2 font-calsans text-[120px] leading-none font-extrabold text-white/[0.03] select-none pointer-events-none group-hover:text-white/[0.05] transition-colors duration-500" aria-hidden="true">
+                      {step.num}
+                    </span>
+                    <div className="flex items-center justify-between mb-10">
+                      <div className="w-12 h-12 rounded-2xl bg-zinc-800 border border-zinc-700/60 flex items-center justify-center group-hover:border-zinc-600 transition-colors duration-300">
+                        <Icon className="w-5 h-5 text-yellow-400" />
+                      </div>
+                      <div className="text-right">
+                        <span className="text-[11px] font-mono font-semibold text-zinc-600 tracking-[0.2em] group-hover:text-zinc-500 transition-colors duration-300 block">{step.num}</span>
+                        <span className="text-[10px] text-zinc-600 bg-zinc-800 border border-zinc-700/60 rounded-full px-2 py-0.5 mt-1 inline-block">{step.duration}</span>
+                      </div>
                     </div>
-                    <div className="w-8 h-8 rounded-lg bg-yellow-400/15 border border-yellow-400/30 flex items-center justify-center mb-3" style={{ transform: "translateZ(8px)" }}>
-                      <Icon className="w-4 h-4 text-yellow-600" />
-                    </div>
-                    <h3 className="font-semibold text-zinc-900 text-sm mb-2" style={{ transform: "translateZ(6px)" }}>{step.title}</h3>
-                    <p className="text-zinc-500 text-xs leading-relaxed" style={{ transform: "translateZ(4px)" }}>{step.desc}</p>
-                    {i < process.length - 1 && (
-                      <div className="hidden lg:block absolute top-10 -right-3.5 w-7 h-px bg-zinc-300/60" />
-                    )}
+                    <h3 className="font-calsans text-lg text-white mb-2 leading-tight">{step.title}</h3>
+                    <p className="text-zinc-400 text-xs leading-relaxed flex-1">{step.desc}</p>
                   </div>
                   </Tilt>
                 </motion.div>
@@ -470,30 +481,21 @@ export default function CustomApplicationsPage() {
             {principles.map((p, i) => {
               const Icon = p.icon;
               return (
-                <motion.div key={p.title} {...fadeUp(i * 0.07)}>
-                  <Tilt tiltMaxAngleX={9} tiltMaxAngleY={9} perspective={800} scale={1.03} transitionSpeed={400} glareEnable={true} glareMaxOpacity={0.06} glareColor="#facc15" glarePosition="all" className="h-full">
-                  <div className="bg-zinc-900 border border-zinc-700/60 rounded-2xl p-6 h-full relative overflow-hidden" style={{ transformStyle: "preserve-3d" }}>
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-14 h-[2px] rounded-full bg-gradient-to-r from-yellow-400 to-amber-500" />
-                    {/* Subtle card inner glow — breathes */}
-                    <motion.div
-                      className="absolute inset-0 rounded-2xl pointer-events-none"
-                      animate={{ opacity: [0, 0.06, 0] }}
-                      transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: i * 0.6 }}
-                      style={{ background: "radial-gradient(circle at 50% 0%, rgba(250,204,21,0.5), transparent 70%)" }}
-                    />
-                    {/* Floating icon badge */}
-                    <motion.div
-                      className="w-9 h-9 rounded-xl bg-yellow-400/10 border border-yellow-400/25 flex items-center justify-center mb-4"
-                      style={{ transform: "translateZ(8px)" }}
-                      animate={{ y: [0, -5, 0] }}
-                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: i * 0.4 }}
-                    >
-                      <Icon className="w-4 h-4 text-yellow-400" />
-                    </motion.div>
-                    <h3 className="font-semibold text-white text-sm mb-2" style={{ transform: "translateZ(6px)" }}>{p.title}</h3>
-                    <p className="text-zinc-400 text-xs leading-relaxed" style={{ transform: "translateZ(4px)" }}>{p.desc}</p>
+                <motion.div key={p.title} {...fadeUp(i * 0.07)} className="h-full">
+                  <div className="relative bg-white border border-zinc-100 rounded-2xl p-6 h-full overflow-hidden hover:border-zinc-200 hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] transition-all duration-300 group">
+                    <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-zinc-200 to-transparent" />
+                    <span className="absolute -bottom-3 -right-1 font-calsans text-[100px] leading-none font-extrabold text-zinc-900/[0.04] select-none pointer-events-none group-hover:text-zinc-900/[0.07] transition-colors duration-500" aria-hidden="true">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-[11px] font-mono font-semibold text-zinc-300 tracking-[0.2em] mb-5 block">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div className="w-9 h-9 rounded-xl bg-zinc-100 border border-zinc-200 flex items-center justify-center mb-4 group-hover:border-zinc-300 transition-colors duration-200">
+                      <Icon className="w-4 h-4 text-yellow-500" />
+                    </div>
+                    <h3 className="font-calsans text-base font-bold text-zinc-900 mb-2 leading-snug">{p.title}</h3>
+                    <p className="text-zinc-400 text-xs leading-relaxed">{p.desc}</p>
                   </div>
-                  </Tilt>
                 </motion.div>
               );
             })}
@@ -505,7 +507,7 @@ export default function CustomApplicationsPage() {
       <section className="py-24 px-6 border-t border-zinc-100">
         <div className="max-w-3xl mx-auto">
           <motion.div {...fadeUp(0)}>
-            <div className="relative bg-zinc-900 rounded-3xl p-10 md:p-14 text-center overflow-hidden">
+            <div className="relative bg-zinc-900 rounded-3xl p-6 sm:p-10 md:p-14 text-center overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/[0.08] to-transparent pointer-events-none" />
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-[2px] rounded-full bg-gradient-to-r from-yellow-400 to-amber-500" />
               <p className="text-yellow-400 text-xs font-semibold tracking-[0.25em] uppercase mb-4">{ui.ctaLabel}</p>

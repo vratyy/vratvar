@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
-import { Shield, BrainCircuit, Zap, Layers, Loader2, Phone } from "lucide-react";
+import { Shield, BrainCircuit, Zap, Layers, Phone, Check, ArrowRight, Loader2 } from "lucide-react";
 import type { ComponentType } from "react";
 import Tilt from "react-parallax-tilt";
 import { useLanguage } from "@/context/LanguageContext";
@@ -28,62 +28,79 @@ const WHY_US_ICONS: ComponentType<{ className?: string }>[] = [Shield, BrainCirc
 // ─── Mini Card Previews ────────────────────────────────────────────────────────────
 
 function DACHPreview() {
-  const items = ["KW Čí slovanie", "STB Normy", "DSGVO Compliance", "Digit. podpis"];
+  const items = ["KW Číslování", "STB Normy", "DSGVO Compliance", "Digitálny podpis"];
   return (
-    <div className="rounded-xl bg-zinc-50 border border-zinc-100 overflow-hidden mb-5">
-      <div className="flex items-center justify-between px-3 py-2 bg-white border-b border-zinc-100">
-        <span className="text-[10px] font-semibold text-zinc-500 tracking-wide uppercase">Compliance Check</span>
-        <span className="text-[9px] font-semibold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded-full">100% ✓</span>
-      </div>
-      <div className="divide-y divide-zinc-100">
-        {items.map((item, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, x: -6 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 + i * 0.08, duration: 0.3, ease: SPRING }}
-            className="flex items-center justify-between px-3 py-1.5"
-          >
-            <span className="text-[10px] text-zinc-600">{item}</span>
-            <span className="text-emerald-500 text-[11px] font-bold">✓</span>
-          </motion.div>
-        ))}
-      </div>
+    <div className="mb-6 space-y-2.5">
+      {items.map((item, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, x: -12 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 + i * 0.07, duration: 0.4, ease: SPRING }}
+          className="flex items-center gap-3"
+        >
+          <div className="w-5 h-5 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center flex-shrink-0">
+            <Check className="w-3 h-3 text-emerald-500" />
+          </div>
+          <span className="text-sm text-zinc-600">{item}</span>
+        </motion.div>
+      ))}
+      <motion.p
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.5, duration: 0.4 }}
+        className="text-[10px] font-semibold text-emerald-500 uppercase tracking-[0.2em] pt-1"
+      >
+        100% Compliance
+      </motion.p>
     </div>
   );
 }
 
 function AIProcessPreview() {
   return (
-    <div className="rounded-xl bg-zinc-50 border border-zinc-100 overflow-hidden mb-5">
-      <div className="flex items-center gap-1.5 px-3 py-2 bg-white border-b border-zinc-100">
-        <motion.div animate={{ rotate: 360 }} transition={{ duration: 2, repeat: Infinity, ease: "linear" }}>
-          <Loader2 className="w-3 h-3 text-yellow-500" />
-        </motion.div>
-        <span className="text-[10px] font-semibold text-zinc-500 uppercase tracking-wide">Čas spracovania</span>
+    <div className="mb-6">
+      <div className="flex items-end gap-5 mb-4">
+        <div>
+          <p className="text-[10px] text-zinc-400 mb-1 uppercase tracking-wide">Manuálne</p>
+          <p className="font-calsans text-3xl font-bold text-zinc-300 leading-none">4 hod</p>
+        </div>
+        <ArrowRight className="w-4 h-4 text-zinc-300 mb-1.5 flex-shrink-0" />
+        <div>
+          <p className="text-[10px] text-zinc-400 mb-1 uppercase tracking-wide">AI Agent</p>
+          <motion.p
+            initial={{ opacity: 0, y: 6 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.5, ease: SPRING }}
+            className="font-calsans text-3xl font-bold text-yellow-500 leading-none"
+          >
+            12 min
+          </motion.p>
+        </div>
       </div>
-      <div className="px-3 py-2.5 space-y-2">
+      <div className="space-y-1.5">
         {[
-          { label: "Manuálne", pct: "100%", colorBar: "bg-red-200", time: "4 hod", timeColor: "text-red-400", animate: false },
-          { label: "AI Agent",  pct: "6%",   colorBar: "bg-yellow-400", time: "12 min", timeColor: "text-yellow-600", animate: true },
+          { label: "Manuálne", pct: "100%", bg: "bg-zinc-200" },
+          { label: "AI Agent",  pct: "6%",  bg: "bg-yellow-400", animate: true },
         ].map((row, i) => (
-          <div key={i} className="flex items-center gap-2">
-            <span className="text-[10px] text-zinc-500 w-20 flex-shrink-0">{row.label}</span>
+          <div key={i} className="flex items-center gap-2.5">
+            <span className="text-[10px] text-zinc-400 w-16 flex-shrink-0">{row.label}</span>
             <div className="flex-1 h-1.5 bg-zinc-100 rounded-full overflow-hidden">
               {row.animate ? (
                 <motion.div
                   initial={{ width: 0 }}
                   whileInView={{ width: row.pct }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.9, ease: SPRING, delay: 0.4 }}
-                  className={`h-full rounded-full ${row.colorBar}`}
+                  transition={{ duration: 1.1, ease: SPRING, delay: 0.4 }}
+                  className={`h-full rounded-full ${row.bg}`}
                 />
               ) : (
-                <div className={`h-full rounded-full ${row.colorBar}`} style={{ width: row.pct }} />
+                <div className={`h-full rounded-full ${row.bg}`} style={{ width: row.pct }} />
               )}
             </div>
-            <span className={`text-[10px] font-mono font-semibold flex-shrink-0 ${row.timeColor}`}>{row.time}</span>
           </div>
         ))}
       </div>
@@ -92,65 +109,69 @@ function AIProcessPreview() {
 }
 
 function SavingsPreview() {
-  const bars = [22, 38, 55, 72, 88, 100];
+  const bars = [18, 32, 50, 65, 80, 100];
   return (
-    <div className="rounded-xl bg-zinc-50 border border-zinc-100 overflow-hidden mb-5">
-      <div className="grid grid-cols-2 gap-px bg-zinc-100 border-b border-zinc-100">
-        {[{ val: "120+", label: "hod / mesiac" }, { val: "0", label: "chýby v účtoch" }].map((s) => (
-          <div key={s.label} className="bg-white px-3 py-2.5 text-center">
-            <p className="font-calsans text-base font-bold text-zinc-900">{s.val}</p>
-            <p className="text-[9px] text-zinc-400 mt-0.5">{s.label}</p>
-          </div>
+    <div className="mb-6">
+      <div className="flex items-baseline gap-2 mb-4">
+        <motion.span
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: SPRING }}
+          className="font-calsans text-5xl font-extrabold text-zinc-900 leading-none"
+        >
+          120+
+        </motion.span>
+        <span className="text-sm text-zinc-400">hodín / mesiac</span>
+      </div>
+      <div className="flex items-end gap-1 h-10">
+        {bars.map((h, i) => (
+          <motion.div
+            key={i}
+            initial={{ scaleY: 0, opacity: 0 }}
+            whileInView={{ scaleY: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 + i * 0.06, duration: 0.45, ease: SPRING }}
+            className="flex-1 rounded-sm origin-bottom"
+            style={{
+              height: `${h}%`,
+              background: i === bars.length - 1
+                ? "linear-gradient(to top, #ca8a04, #fde047)"
+                : `rgba(234,179,8,${0.25 + i * 0.1})`,
+            }}
+          />
         ))}
       </div>
-      <div className="px-3 pt-2 pb-2">
-        <div className="flex items-end gap-1 h-16">
-          {bars.map((h, i) => (
-            <motion.div
-              key={i}
-              initial={{ scaleY: 0, opacity: 0 }}
-              whileInView={{ scaleY: 1, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 + i * 0.07, duration: 0.5, ease: SPRING }}
-              className="flex-1 rounded-t-sm origin-bottom transition-all duration-300 hover:brightness-90"
-              style={{
-                height: `${h}%`,
-                background: h === 100
-                  ? "linear-gradient(to top, #ca8a04, #fde047)"
-                  : "linear-gradient(to top, #eab308, #fef08a)",
-              }}
-            />
-          ))}
-        </div>
-        <p className="text-[9px] text-zinc-400 mt-1">Úsp. hodín / mesiac</p>
-      </div>
+      <p className="text-[10px] text-zinc-400 mt-1.5 uppercase tracking-[0.15em]">Zero-Touch úspory</p>
     </div>
   );
 }
 
 function StackPreview() {
   const layers = [
-    { name: "UI Layer",    tag: "Next.js 16 + shadcn/ui",    color: "#6366f1" },
-    { name: "Logic Layer", tag: "AI Agents + ZettelFlow",     color: "#eab308" },
-    { name: "Data Layer",  tag: "Supabase + PostgreSQL",      color: "#10b981" },
+    { name: "Next.js 16 + shadcn/ui", tag: "UI",    color: "#6366f1" },
+    { name: "AI Agents + ZettelFlow", tag: "Logic",  color: "#eab308" },
+    { name: "Supabase + PostgreSQL",  tag: "Data",   color: "#10b981" },
   ];
   return (
-    <div className="rounded-xl bg-zinc-50 border border-zinc-100 overflow-hidden mb-5">
+    <div className="mb-6 space-y-2">
       {layers.map((layer, i) => (
         <motion.div
           key={i}
-          initial={{ opacity: 0, x: -8 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 8 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: i * 0.1, duration: 0.35, ease: SPRING }}
-          className="flex items-center gap-2.5 px-3 py-2 border-b border-zinc-100 last:border-0"
+          transition={{ delay: i * 0.1, duration: 0.4, ease: SPRING }}
+          className="flex items-center gap-3 py-2 border-b border-zinc-100 last:border-0"
         >
-          <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: layer.color }} />
-          <div className="flex-1">
-            <p className="text-[10px] font-semibold text-zinc-700 leading-none">{layer.name}</p>
-            <p className="text-[9px] text-zinc-400 mt-0.5">{layer.tag}</p>
-          </div>
-          <div className="w-10 h-1.5 rounded-full" style={{ backgroundColor: `${layer.color}25`, border: `1px solid ${layer.color}45` }} />
+          <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: layer.color }} />
+          <p className="flex-1 text-sm text-zinc-600">{layer.name}</p>
+          <span
+            className="text-[10px] font-semibold px-2 py-0.5 rounded-full"
+            style={{ color: layer.color, background: `${layer.color}14`, border: `1px solid ${layer.color}30` }}
+          >
+            {layer.tag}
+          </span>
         </motion.div>
       ))}
     </div>
@@ -244,7 +265,7 @@ export function WhyUsSection() {
           transition={{ duration: 0.65, ease: SPRING }}
           className="mt-14 flex justify-center"
         >
-          <div className="relative bg-zinc-900 border border-zinc-700/60 rounded-3xl px-10 py-9 shadow-[0_8px_48px_rgba(0,0,0,0.35)] flex flex-col items-center gap-4 overflow-hidden max-w-xl w-full text-center">
+          <div className="relative bg-zinc-900 border border-zinc-700/60 rounded-3xl px-6 py-7 sm:px-10 sm:py-9 shadow-[0_8px_48px_rgba(0,0,0,0.35)] flex flex-col items-center gap-4 overflow-hidden max-w-xl w-full text-center">
             {/* Top accent */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-[2px] rounded-full bg-gradient-to-r from-yellow-400 to-amber-500" />
             {/* Ambient glow */}

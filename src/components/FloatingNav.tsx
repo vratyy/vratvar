@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { Phone, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/context/LanguageContext";
@@ -35,8 +36,11 @@ export function FloatingNav() {
     );
 
     t.nav.items.forEach(({ href }) => {
-      const el = document.querySelector(href);
-      if (el) observer.observe(el);
+      // Only observe DOM elements for anchor links, not page routes
+      if (href.startsWith('#')) {
+        const el = document.querySelector(href);
+        if (el) observer.observe(el);
+      }
     });
 
     return () => observer.disconnect();
@@ -98,9 +102,17 @@ export function FloatingNav() {
         {/* ── Logo ── */}
         <Link
           href="/"
-          className="relative flex items-center pl-2 pr-5 mr-1 group"
+          className="relative flex items-center gap-2 pl-2 pr-5 mr-1 group"
           aria-label="VRATVAR — home"
         >
+          <Image
+            src="/logo.svg"
+            alt="VRATVAR logo mark"
+            width={22}
+            height={20}
+            className="flex-shrink-0 group-hover:opacity-70 transition-opacity duration-200"
+            priority
+          />
           <span className="font-lexend text-sm font-bold tracking-[0.08em] text-zinc-900 leading-none group-hover:opacity-70 transition-opacity duration-200">
             VRAT<span className="text-yellow-500">VAR</span>
           </span>
@@ -197,7 +209,7 @@ export function FloatingNav() {
           <motion.button
             onClick={() => setMobileOpen((v) => !v)}
             whileTap={{ scale: 0.88 }}
-            className="md:hidden flex items-center justify-center w-8 h-8 rounded-full text-zinc-500 hover:text-zinc-900 hover:bg-zinc-100 transition-all duration-200 flex-shrink-0"
+            className="md:hidden flex items-center justify-center w-11 h-11 rounded-full text-zinc-500 hover:text-zinc-900 hover:bg-zinc-100 transition-all duration-200 flex-shrink-0"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
           >

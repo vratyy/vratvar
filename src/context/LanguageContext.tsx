@@ -56,9 +56,9 @@ const dict: Record<Lang, Translation> = {
       ],
     },
     services: {
-      label: "Služby",
-      heading: "Čo vyvíjame",
-      subtitle: "Od inteligentných B2B portálov po plne autonómne AI systémy — navrhujeme a implementujeme riešenia, ktoré sa škálujú.",
+      label: "Riešenia",
+      heading: "Systémy, ktoré pracujú za vás.",
+      subtitle: "Ušetrite stovky hodín mesačne. Naše B2B portály a AI agenti bežia 24/7 — bez chýb, bez papierovačiek, bez zbytočných nákladov.",
       items: [
         { title: "ZettelFlow", desc: "Inteligentný B2B portál pre stavebné firmy. Projekty, faktúry a tímy na jednom mieste." },
         { title: "Custom Applications", desc: "Webové a mobilné aplikácie na mieru. Moderná architektúra, škálovateľný kód." },
@@ -128,9 +128,9 @@ const dict: Record<Lang, Translation> = {
       ],
     },
     services: {
-      label: "Služby",
-      heading: "Co vyvíjíme",
-      subtitle: "Od inteligentních B2B portálů po plně autonomní AI systémy — navrhujeme a implementujeme řešení, která se škálují.",
+      label: "Řešení",
+      heading: "Systémy, které pracují za vás.",
+      subtitle: "Ušetřete stovky hodin měsíčně. Naše B2B portály a AI agenti běží 24/7 — bez chyb, bez papírování, bez zbytečných nákladů.",
       items: [
         { title: "ZettelFlow", desc: "Inteligentní B2B portál pro stavební firmy. Projekty, faktury a týmy na jednom místě." },
         { title: "Custom Applications", desc: "Webové a mobilní aplikace na míru. Moderní architektura, škálovatelný kód." },

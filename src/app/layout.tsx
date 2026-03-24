@@ -7,6 +7,8 @@ import { SmoothScroll } from "@/components/SmoothScroll";
 import { CursorOrb } from "@/components/CursorOrb";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { LanguageProvider } from "@/context/LanguageContext";
+import { CookieBanner } from "@/components/CookieBanner";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -74,6 +76,8 @@ export default function RootLayout({
             <CursorOrb />
             <FloatingNav />
             {children}
+            <CookieBanner />
+            <Toaster richColors position="bottom-right" />
           </SmoothScroll>
         </LanguageProvider>
       </body>

@@ -64,9 +64,9 @@ export function HeroSection() {
           Ambient Background Glows
           ═══════════════════════════════════════ */}
       <div className="absolute inset-0 pointer-events-none select-none" aria-hidden>
-        <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-[58%] w-[700px] h-[700px] rounded-full bg-yellow-300/[0.18] blur-[120px]" />
-        <div className="absolute top-[30%] right-[10%] w-[400px] h-[400px] rounded-full bg-amber-300/[0.10] blur-[100px]" />
-        <div className="absolute bottom-[15%] left-[8%] w-[250px] h-[250px] rounded-full bg-yellow-200/[0.15] blur-[80px]" />
+        <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-[58%] w-[700px] h-[700px] rounded-full bg-yellow-300/[0.09] blur-[160px]" />
+        <div className="absolute top-[30%] right-[10%] w-[400px] h-[400px] rounded-full bg-amber-300/[0.05] blur-[130px]" />
+        <div className="absolute bottom-[15%] left-[8%] w-[250px] h-[250px] rounded-full bg-yellow-200/[0.07] blur-[110px]" />
       </div>
 
       {/* ═══════════════════════════════════════
@@ -88,7 +88,7 @@ export function HeroSection() {
 
       {/* Bottom section fade */}
       <div
-        className="absolute bottom-0 inset-x-0 h-44 bg-gradient-to-t from-[#FAFAFA] to-transparent pointer-events-none"
+        className="absolute bottom-0 inset-x-0 h-72 bg-gradient-to-t from-[#FAFAFA] to-transparent pointer-events-none"
         aria-hidden
       />
 

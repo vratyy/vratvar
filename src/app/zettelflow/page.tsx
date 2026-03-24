@@ -23,49 +23,46 @@ const FEATURES = [
     icon: Clock,
     tag: "Sledovanie času",
     title: "Smart Stundenzettel",
-    desc: "Montéri logujú hodiny priamo z mobilu. Systém automaticky generuje právne platné nemecké výkazy s KW číslovaním a digitálnym podpisom podľa DSGVO.",
+    desc: "Montéri logujú hodiny z mobilu. Systém generuje právne platné výkazy s KW číslovaním a digitálnym podpisom.",
     bullets: [
-      "Mobilná aplikácia pre terénnych pracovníkov",
-      "Automatické KW číslovanie (nemecký štandard)",
-      "PDF s kvalifikovaným digitálnym podpisom",
-      "Real-time schvaľovací workflow",
+      "Mobilná aplikácia pre terén",
+      "Automatické KW číslovanie",
+      "PDF s digitálnym podpisom",
       "Export pre mzdové účtovníctvo",
     ],
-    color: "from-zinc-900 to-zinc-900",
     accent: "text-blue-400",
-    border: "border-zinc-700/60",
+    accentDot: "bg-blue-400",
+    hover: "from-blue-400/[0.06] to-transparent",
   },
   {
     icon: FileText,
     tag: "Fakturácia",
     title: "Zero-Touch Fakturácia",
-    desc: "Po schválení pracovného výkazu systém sám vygeneruje faktúru, priradí správne číslo, odošle zákazníkovi a zaúčtuje platbu — bez jediného kliknutia.",
+    desc: "Po schválení výkazu systém vygeneruje faktúru, odošle zákazníkovi a zaúčtuje platbu — bez kliknutia.",
     bullets: [
-      "Automatické generovanie po schválení výkazu",
-      "Striktné chronologické číslovanie (zákonná požiadavka)",
-      "Presné priradenie kalendárnych týždňov (KW)",
-      "Automatické odosielanie zákazníkom e-mailom",
-      "Integrácia s DATEV a nemeckými ERP systémami",
+      "Automatické generovanie faktúr",
+      "Chronologické číslovanie (zákon)",
+      "Odosielanie e-mailom zákazníkovi",
+      "Integrácia DATEV / Lexware / SAP",
     ],
-    color: "from-zinc-900 to-zinc-900",
     accent: "text-amber-400",
-    border: "border-zinc-700/60",
+    accentDot: "bg-amber-400",
+    hover: "from-amber-400/[0.06] to-transparent",
   },
   {
     icon: BarChart3,
     tag: "Analytika",
     title: "Live Finančný Dashboard",
-    desc: "Kompletný prehľad vašej firmy v reálnom čase. Zaevidované, čakajúce a zaplatené faktúry, výkonnosť tímu a profitabilita projektov na jednej obrazovke.",
+    desc: "Kompletný prehľad firmy v reálnom čase — faktúry, výkonnosť tímu a cash flow na jednej obrazovke.",
     bullets: [
-      "Live cash flow a výhľad na nasledujúce týždne",
-      "Prehľad rentability podľa projektu a zákazníka",
-      "Automatické upozornenia na oneskorené platby",
-      "Exporty pre daňové priznania (XML, CSV, PDF)",
-      "Role-based prístupy pre manažérov a účtovníkov",
+      "Live cash flow a výhľad",
+      "Rentabilita podľa projektu",
+      "Upozornenia na oneskorené platby",
+      "Export XML, CSV, PDF",
     ],
-    color: "from-zinc-900 to-zinc-900",
     accent: "text-emerald-400",
-    border: "border-zinc-700/60",
+    accentDot: "bg-emerald-400",
+    hover: "from-emerald-400/[0.06] to-transparent",
   },
 ];
 
@@ -83,57 +80,53 @@ const STATS = [
   { value: "100%", label: "DACH compliance" },
 ];
 
-const INTEGRATIONS   = ["DATEV", "SAP Business One", "Lexware", "sevDesk", "Xero", "Google Workspace"];
-const INTEGRATIONS_2 = ["Microsoft 365", "Outlook", "Slack", "Stripe", "Zapier", "Make.com"];
+const INTEGRATIONS = ["DATEV", "SAP Business One", "Lexware", "sevDesk", "Xero", "Google Workspace", "Microsoft 365", "Outlook", "Slack", "Stripe", "Zapier", "Make.com"];
 
 const FEATURES_CZ = [
   {
     icon: Clock,
     tag: "Sledování času",
     title: "Smart Stundenzettel",
-    desc: "Montéři logují hodiny přímo z mobilu. Systém automaticky generuje právně platné německé výkazy s KW číslovaním a digitálním podpisem podle DSGVO.",
+    desc: "Montéři logují hodiny z mobilu. Systém generuje právně platné výkazy s KW číslováním a digitálním podpisem.",
     bullets: [
-      "Mobilní aplikace pro terénní pracovníky",
-      "Automatické KW číslovaní (německý standard)",
-      "PDF s kvalifikovaným digitálním podpisem",
-      "Schvalovací workflow v reálném čase",
+      "Mobilní aplikace pro terén",
+      "Automatické KW číslování",
+      "PDF s digitálním podpisem",
       "Export pro mzdové účetnictví",
     ],
-    color: "from-zinc-900 to-zinc-900",
     accent: "text-blue-400",
-    border: "border-zinc-700/60",
+    accentDot: "bg-blue-400",
+    hover: "from-blue-400/[0.06] to-transparent",
   },
   {
     icon: FileText,
     tag: "Fakturace",
     title: "Zero-Touch Fakturace",
-    desc: "Po schválení pracovního výkazu systém sám vygeneruje fakturu, přiřadí správné číslo, odešle zákazníkovi a zaúčtuje platbu — bez jediného kliknutí.",
+    desc: "Po schválení výkazu systém vygeneruje fakturu, odešle zákazníkovi a zaúčtuje platbu — bez kliknutí.",
     bullets: [
-      "Automatické generování po schválení výkazu",
-      "Strikt ní chronologické číslovaní (zákonný požadavek)",
-      "Přesné přiřazení kalendářních týdnů (KW)",
-      "Automatické zasílání zákazníkům e-mailem",
-      "Integrace s DATEV a německými ERP systémy",
+      "Automatické generování faktur",
+      "Chronologické číslování (zákon)",
+      "Zasílání e-mailem zákazníkovi",
+      "Integrace DATEV / Lexware / SAP",
     ],
-    color: "from-zinc-900 to-zinc-900",
     accent: "text-amber-400",
-    border: "border-zinc-700/60",
+    accentDot: "bg-amber-400",
+    hover: "from-amber-400/[0.06] to-transparent",
   },
   {
     icon: BarChart3,
     tag: "Analytika",
     title: "Live Finanční Dashboard",
-    desc: "Kompletní přehled vaší firmy v reálném čase. Zaevidentované, čekající a zaplacené faktury, výkonnost týmu a rentabilita projektů na jedné obrazovce.",
+    desc: "Kompletní přehled firmy v reálném čase — faktury, výkonnost týmu a cash flow na jedné obrazovce.",
     bullets: [
-      "Live cash flow a výhled na nadávající týdny",
-      "Přehled rentability podle projektu a zákazníka",
-      "Automatická upozornění na opožděné platby",
-      "Exporty pro daňová přiznání (XML, CSV, PDF)",
-      "Role-based přístupy pro manažery a účetní",
+      "Live cash flow a výhled",
+      "Rentabilita podle projektu",
+      "Upozornění na opožděné platby",
+      "Export XML, CSV, PDF",
     ],
-    color: "from-zinc-900 to-zinc-900",
     accent: "text-emerald-400",
-    border: "border-zinc-700/60",
+    accentDot: "bg-emerald-400",
+    hover: "from-emerald-400/[0.06] to-transparent",
   },
 ];
 
@@ -165,7 +158,7 @@ const CAPABILITIES_CZ = [
   { icon: Shield, title: "DSGVO & STB Compliance", desc: "Veškerá data uložena v EU. Plná shoda s německou legislativou, STB normami a DSGVO." },
   { icon: Zap, title: "Automatická upozornění", desc: "E-mail a SMS upozornění při schválení výkazu, odeslání faktury nebo opožděné platbě." },
   { icon: BarChart3, title: "Reporting & Export", desc: "Jedním kliknutím exportujte do DATEV, Lexware nebo libovolného CSV/XML formátu." },
-  { icon: CheckCircle2, title: "Multi-tenantní architektura", desc: "Jeden systém pro více firem nebo diviizí. Kompletní izolace dat a role-based přístup." },
+  { icon: CheckCircle2, title: "Multi-tenantní architektura", desc: "Jeden systém pro více firem nebo divizí. Kompletní izolace dat a role-based přístup." },
   { icon: FileText, title: "Smlouvy & Dokumenty", desc: "Generování a správa projektových smluv, objednávek a dodacích listů přímo v systému." },
 ];
 
@@ -174,30 +167,30 @@ const SK_UI = {
   back: "Späť na hlavnú stránku",
   h1a: "Riadiace stredisko pre vaše",
   h1b: "stavby v DACH",
-  sub: "Jeden systém pre sledovanie hodín, automatickú faktúráciu a live finančné reporty. Špeciálne navrhnutý pre stavebné a remeselnnícke firmy pôsobiáce v DACH regióne.",
+  sub: "Jeden systém pre sledovanie hodín, automatickú fakturáciu a live finančné reporty. Špeciálne navrhnutý pre stavebné a remeselnícke firmy pôsobiace v DACH regióne.",
   cta1: "Vyžiadovať demo",
   cta2: "Pozrieť prehľad",
-  ds1: "Faktúry tento mes.", ds2: "Zaplacené", ds3: "Aktívne projekty",
-  ra: "Schválené", rw: "Čaká", rp: "Zaplacené",
-  df: "94\u00a0% faktúr zaplacených tento mesiac",
+  ds1: "Faktúry tento mes.", ds2: "Zaplatené", ds3: "Aktívne projekty",
+  ra: "Schválené", rw: "Čaká", rp: "Zaplatené",
+  df: "94\u00a0% faktúr zaplatených tento mesiac",
   fl: "Čo ZettelFlow rieši", fh: "Tri moduly. Jeden systém.",
-  sl: "Proces", sh: "Ako to funguje", ss: "Od zalogovavaných hodín po zaplatené faktúry — celý cyklus prebehne bez manuálnej práce.",
+  sl: "Proces", sh: "Ako to funguje", ss: "Od zalogovaných hodín po zaplatené faktúry — celý cyklus prebehne bez manuálnej práce.",
   cl: "Viac než faktúrácia", ch: "Všetko čo stavebná firma potrebuje",
   il: "Integrácie",
-  tq: "„ZettelFlow nám ušetril vyoše 120 hodín mesačne. Montéri logujú čas cez mobil a faktúry idú zákazníkom automaticky. Žiadna administratíva, žiadne chyby.“",
+  tq: "„ZettelFlow nám ušetril vyše 120 hodín mesačne. Montéri logujú čas cez mobil a faktúry idú zákazníkom automaticky. Žiadna administratíva, žiadne chyby.“",
   tc: "Kováč Bau GmbH · Stavebná firma, DACH región",
   ctaL: "Bezplatné demo", ctaH: "Pripravený zefektívniť svoje stavby?",
   ctaD: "Naplánujte si 30-minútové demo. Ukážeme vám ZettelFlow na vašich reálnych dátach a navrhneme implementáciu.",
   ctaB: "Vyžiadovať bezplatné demo",
-  ctaF: "30 minút · bez zäväzkov · s vašimi dátami",
+  ctaF: "30 minút · bez záväzkov · s vašimi dátami",
 };
 
 const CZ_UI = {
   badge: "Produkt · B2B Portál",
   back: "Zpět na hlavní stránku",
-  h1a: "Řídict centrum pro vaše",
+  h1a: "Řídicí centrum pro vaše",
   h1b: "stavby v DACH",
-  sub: "Jeden systém pro sledování hodin, automatickou fakturaci a live finanční reporty. Speciálně navržený pro stavební a řemeslém firmy působící v DACH regionu.",
+  sub: "Jeden systém pro sledování hodin, automatickou fakturaci a live finanční reporty. Speciálně navržený pro stavební a řemeslnické firmy působící v DACH regionu.",
   cta1: "Vyžádat demo",
   cta2: "Zobrazit přehled",
   ds1: "Faktury tento měs.", ds2: "Zaplaceno", ds3: "Aktivní projekty",
@@ -231,7 +224,7 @@ export default function ZettelFlowPage() {
     { name: "BauTech Wien GmbH", kw: "KW 10", status: ui.rp, color: "text-blue-400 bg-blue-950/50" },
   ];
   return (
-    <main className="min-h-screen bg-zinc-50">
+    <main className="min-h-screen bg-zinc-50 overflow-x-hidden">
       {/* ── Hero ── */}
       <section className="relative pt-32 pb-24 px-6 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
@@ -372,34 +365,37 @@ export default function ZettelFlowPage() {
             </h2>
           </motion.div>
 
-          <div className="space-y-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {features.map((f, i) => {
               const Icon = f.icon;
               return (
-                <motion.div key={f.title} {...fadeUp(i * 0.1)}>
-                  <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5} perspective={1000} scale={1.02} transitionSpeed={500} glareEnable={true} glareMaxOpacity={0.07} glareColor="#facc15" glarePosition="all">
-                  <div className={`bg-gradient-to-br ${f.color} rounded-3xl border ${f.border} p-8 md:p-10 relative overflow-hidden`} style={{ transformStyle: "preserve-3d" }}>
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-[2px] rounded-full bg-gradient-to-r from-yellow-400 to-amber-500" />
-                    <div className="grid md:grid-cols-2 gap-8 items-start">
-                      <div>
-                        <div className="flex items-center gap-3 mb-5" style={{ transform: "translateZ(8px)" }}>
-                          <div className="w-10 h-10 rounded-xl bg-zinc-800 border border-zinc-700 flex items-center justify-center">
-                            <Icon className={`w-5 h-5 ${f.accent}`} />
-                          </div>
-                          <span className={`text-xs font-semibold tracking-[0.2em] uppercase ${f.accent}`}>{f.tag}</span>
-                        </div>
-                        <h3 className="font-calsans text-2xl font-bold text-white mb-3" style={{ transform: "translateZ(6px)" }}>{f.title}</h3>
-                        <p className="text-zinc-400 leading-relaxed" style={{ transform: "translateZ(4px)" }}>{f.desc}</p>
+                <motion.div key={f.title} {...fadeUp(i * 0.1)} className="h-full">
+                  <Tilt tiltMaxAngleX={8} tiltMaxAngleY={8} perspective={900} scale={1.02} transitionSpeed={450} glareEnable={true} glareMaxOpacity={0.07} glareColor="#facc15" glarePosition="all" className="h-full">
+                  <div className="relative bg-zinc-900 border border-zinc-800 rounded-2xl p-8 flex flex-col h-full overflow-hidden group hover:border-zinc-700 hover:shadow-[0_24px_64px_rgba(0,0,0,0.5)] transition-all duration-500" style={{ transformStyle: "preserve-3d" }}>
+                    <div className={`absolute inset-0 bg-gradient-to-br ${f.hover} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl`} />
+                    <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                    <span className="absolute -bottom-4 -right-2 font-calsans text-[120px] leading-none font-extrabold text-white/[0.03] select-none pointer-events-none group-hover:text-white/[0.05] transition-colors duration-500" aria-hidden="true">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div className="flex items-center justify-between mb-10">
+                      <div className="w-12 h-12 rounded-2xl bg-zinc-800 border border-zinc-700/60 flex items-center justify-center group-hover:border-zinc-600 transition-colors duration-300">
+                        <Icon className={`w-5 h-5 ${f.accent}`} />
                       </div>
-                      <ul className="space-y-3" style={{ transform: "translateZ(4px)" }}>
-                        {f.bullets.map((b) => (
-                          <li key={b} className="flex items-start gap-3">
-                            <CheckCircle2 className={`w-4 h-4 mt-0.5 flex-shrink-0 ${f.accent}`} />
-                            <span className="text-zinc-300 text-sm leading-relaxed">{b}</span>
-                          </li>
-                        ))}
-                      </ul>
+                      <span className="text-[11px] font-mono font-semibold text-zinc-600 tracking-[0.2em] group-hover:text-zinc-500 transition-colors duration-300">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
                     </div>
+                    <span className={`text-[10px] font-semibold tracking-[0.2em] uppercase mb-3 block ${f.accent}`}>{f.tag}</span>
+                    <h3 className="font-calsans text-2xl text-white mb-3 leading-tight">{f.title}</h3>
+                    <p className="text-zinc-400 text-sm leading-relaxed mb-6 flex-1">{f.desc}</p>
+                    <ul className="space-y-2">
+                      {f.bullets.map((b, j) => (
+                        <li key={j} className="flex items-center gap-2 text-xs text-zinc-500">
+                          <span className={`w-1 h-1 rounded-full flex-shrink-0 ${f.accentDot}`} />
+                          {b}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                   </Tilt>
                 </motion.div>
@@ -425,31 +421,36 @@ export default function ZettelFlowPage() {
 
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
             {steps.map((s, i) => (
-              <motion.div key={s.num} {...fadeUp(i * 0.1)}>
-                <Tilt tiltMaxAngleX={8} tiltMaxAngleY={8} perspective={800} scale={1.03} transitionSpeed={400} glareEnable={true} glareMaxOpacity={0.18} glareColor="#ffffff" glarePosition="top" className="h-full">
-                <div
-                  className="relative rounded-2xl p-6 h-full overflow-hidden"
-                  style={{
-                    transformStyle: "preserve-3d",
-                    background: "linear-gradient(145deg, rgba(255,255,255,0.82) 0%, rgba(255,255,255,0.52) 100%)",
-                    backdropFilter: "blur(24px)",
-                    WebkitBackdropFilter: "blur(24px)",
-                    border: "1px solid rgba(255,255,255,0.75)",
-                    boxShadow: "0 8px 32px rgba(0,0,0,0.07), 0 1.5px 6px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.95), inset 0 -1px 0 rgba(0,0,0,0.03)",
-                  }}
-                >
-                  {/* Yellow top accent */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-14 h-[2px] rounded-full bg-gradient-to-r from-yellow-400 to-amber-500" />
-                  {/* Inner specular shimmer — top-left corner */}
-                  <div className="absolute top-0 left-0 w-3/4 h-px bg-gradient-to-r from-white/90 via-white/60 to-transparent" />
-                  <span className="font-calsans text-4xl font-extrabold text-zinc-200 leading-none select-none" style={{ transform: "translateZ(2px)" }}>{s.num}</span>
-                  <h3 className="font-semibold text-zinc-900 text-sm mt-2 mb-2" style={{ transform: "translateZ(6px)" }}>{s.title}</h3>
-                  <p className="text-zinc-500 text-xs leading-relaxed" style={{ transform: "translateZ(4px)" }}>{s.desc}</p>
+              <motion.div key={s.num} {...fadeUp(i * 0.1)} className="h-full">
+                <div className="relative bg-white border border-zinc-100 rounded-2xl p-6 h-full overflow-hidden hover:border-zinc-200 hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] transition-all duration-300 group">
+                  {/* Top shimmer line */}
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-zinc-200 to-transparent" />
+
+                  {/* Large watermark number */}
+                  <span className="absolute -bottom-3 -right-1 font-calsans text-[100px] leading-none font-extrabold text-zinc-900/[0.04] select-none pointer-events-none group-hover:text-zinc-900/[0.07] transition-colors duration-500">
+                    {s.num}
+                  </span>
+
+                  {/* Mono number */}
+                  <span className="text-[11px] font-mono font-semibold text-zinc-300 tracking-[0.2em] mb-7 block">
+                    {s.num}
+                  </span>
+
+                  {/* Title */}
+                  <h3 className="font-calsans text-base font-bold text-zinc-900 mb-2 leading-snug">
+                    {s.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-zinc-400 text-xs leading-relaxed">
+                    {s.desc}
+                  </p>
+
+                  {/* Connector arrow */}
                   {i < steps.length - 1 && (
-                    <div className="hidden md:block absolute top-8 -right-3 w-6 h-px bg-zinc-300/60" />
+                    <div className="hidden md:block absolute top-9 -right-3 w-6 h-px bg-zinc-200" />
                   )}
                 </div>
-                </Tilt>
               </motion.div>
             ))}
           </div>
@@ -468,19 +469,28 @@ export default function ZettelFlowPage() {
             </h2>
           </motion.div>
 
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 relative">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 relative">
             {caps.map((c, i) => {
               const Icon = c.icon;
               return (
-                <motion.div key={c.title} {...fadeUp(i * 0.07)}>
-                  <Tilt tiltMaxAngleX={8} tiltMaxAngleY={8} perspective={800} scale={1.03} transitionSpeed={400} glareEnable={true} glareMaxOpacity={0.06} glareColor="#facc15" glarePosition="all" className="h-full">
-                  <div className="bg-zinc-800/60 border border-zinc-700/60 rounded-2xl p-6 h-full hover:bg-zinc-800 hover:border-zinc-600 transition-all duration-300 relative overflow-hidden" style={{ transformStyle: "preserve-3d" }}>
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-14 h-[2px] rounded-full bg-gradient-to-r from-yellow-400 to-amber-500" />
-                    <div className="w-9 h-9 rounded-xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center mb-4" style={{ transform: "translateZ(8px)" }}>
-                      <Icon className="w-4 h-4 text-yellow-400" />
+                <motion.div key={c.title} {...fadeUp(i * 0.07)} className="h-full">
+                  <Tilt tiltMaxAngleX={8} tiltMaxAngleY={8} perspective={900} scale={1.02} transitionSpeed={450} glareEnable={true} glareMaxOpacity={0.07} glareColor="#facc15" glarePosition="all" className="h-full">
+                  <div className="relative bg-zinc-900 border border-zinc-800 rounded-2xl p-8 flex flex-col h-full overflow-hidden group hover:border-zinc-700 hover:shadow-[0_24px_64px_rgba(0,0,0,0.5)] transition-all duration-500" style={{ transformStyle: "preserve-3d" }}>
+                    <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl" />
+                    <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                    <span className="absolute -bottom-4 -right-2 font-calsans text-[120px] leading-none font-extrabold text-white/[0.03] select-none pointer-events-none group-hover:text-white/[0.05] transition-colors duration-500" aria-hidden="true">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div className="flex items-center justify-between mb-8">
+                      <div className="w-12 h-12 rounded-2xl bg-zinc-800 border border-zinc-700/60 flex items-center justify-center group-hover:border-zinc-600 transition-colors duration-300">
+                        <Icon className="w-5 h-5 text-yellow-400" />
+                      </div>
+                      <span className="text-[11px] font-mono font-semibold text-zinc-600 tracking-[0.2em] group-hover:text-zinc-500 transition-colors duration-300">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
                     </div>
-                    <h3 className="font-semibold text-white mb-2 text-sm" style={{ transform: "translateZ(6px)" }}>{c.title}</h3>
-                    <p className="text-zinc-400 text-xs leading-relaxed" style={{ transform: "translateZ(4px)" }}>{c.desc}</p>
+                    <h3 className="font-calsans text-lg text-white mb-2 leading-tight">{c.title}</h3>
+                    <p className="text-zinc-400 text-xs leading-relaxed">{c.desc}</p>
                   </div>
                   </Tilt>
                 </motion.div>
@@ -496,25 +506,11 @@ export default function ZettelFlowPage() {
           <p className="text-zinc-400 text-[10px] font-semibold tracking-[0.32em] uppercase">{ui.il}</p>
         </motion.div>
 
-        {/* Dual-row infinite marquee */}
+        {/* Single-row infinite marquee */}
         <div className="relative [mask-image:linear-gradient(to_right,transparent_0%,black_12%,black_88%,transparent_100%)]">
-          {/* Row 1 — scrolls left */}
-          <div className="flex overflow-hidden mb-3 hover:[&>div]:[animation-play-state:paused]">
+          <div className="flex overflow-hidden hover:[&>div]:[animation-play-state:paused]">
             <div className="flex gap-3 shrink-0 animate-marquee">
               {[...INTEGRATIONS, ...INTEGRATIONS].map((name, i) => (
-                <span
-                  key={i}
-                  className="shrink-0 px-5 py-2 rounded-full bg-zinc-100/70 text-zinc-500 text-[13px] font-medium whitespace-nowrap select-none"
-                >
-                  {name}
-                </span>
-              ))}
-            </div>
-          </div>
-          {/* Row 2 — scrolls right */}
-          <div className="flex overflow-hidden hover:[&>div]:[animation-play-state:paused]">
-            <div className="flex gap-3 shrink-0 animate-[marquee-reverse_32s_linear_infinite]">
-              {[...INTEGRATIONS_2, ...INTEGRATIONS_2].map((name, i) => (
                 <span
                   key={i}
                   className="shrink-0 px-5 py-2 rounded-full bg-zinc-100/70 text-zinc-500 text-[13px] font-medium whitespace-nowrap select-none"
@@ -532,7 +528,7 @@ export default function ZettelFlowPage() {
         <div className="max-w-3xl mx-auto">
           <motion.div {...fadeUp(0)}>
             <Tilt tiltMaxAngleX={7} tiltMaxAngleY={7} perspective={900} scale={1.02} transitionSpeed={400} glareEnable={true} glareMaxOpacity={0.06} glareColor="#facc15" glarePosition="all">
-            <div className="bg-white rounded-3xl border border-zinc-100 shadow-[0_8px_40px_rgba(0,0,0,0.06)] p-10 text-center relative overflow-hidden" style={{ transformStyle: "preserve-3d" }}>
+            <div className="bg-white rounded-3xl border border-zinc-100 shadow-[0_8px_40px_rgba(0,0,0,0.06)] p-6 sm:p-10 text-center relative overflow-hidden" style={{ transformStyle: "preserve-3d" }}>
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-[2px] rounded-full bg-gradient-to-r from-yellow-400 to-amber-500" />
               <div className="flex justify-center gap-1 mb-5" style={{ transform: "translateZ(4px)" }}>
                 {Array.from({ length: 5 }).map((_, i) => (
@@ -556,7 +552,7 @@ export default function ZettelFlowPage() {
       <section className="py-24 px-6 border-t border-zinc-100">
         <div className="max-w-3xl mx-auto">
           <motion.div {...fadeUp(0)}>
-            <div className="relative bg-zinc-900 rounded-3xl p-10 md:p-14 text-center overflow-hidden">
+            <div className="relative bg-zinc-900 rounded-3xl p-6 sm:p-10 md:p-14 text-center overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/[0.08] to-transparent pointer-events-none" />
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-[2px] rounded-full bg-gradient-to-r from-yellow-400 to-amber-500" />
               <p className="text-yellow-400 text-xs font-semibold tracking-[0.25em] uppercase mb-4">{ui.ctaL}</p>

@@ -88,7 +88,7 @@ const USE_CASES = [
   {
     icon: RefreshCw,
     title: "Dátové integrácie",
-    desc: "Agent synchronizuje dáta medzi ERP, CRM, účtovníctvom a ďalšími systémami. Viac manuálneho kopírovania a exportovania.",
+    desc: "Agent synchronizuje dáta medzi ERP, CRM, účtovníctvom a ďalšími systémami. Žiadne manuálne kopírovanie ani exportovanie.",
     saving: "~15 hod/mes",
     accent: "text-sky-400",
     bg: "bg-zinc-900",
@@ -334,7 +334,7 @@ export default function AIAgentsPage() {
   const differentiators = lang === "cz" ? DIFFERENTIATORS_CZ : DIFFERENTIATORS;
   const stats = lang === "cz" ? STATS_CZ : STATS;
   return (
-    <main className="min-h-screen bg-zinc-50">
+    <main className="min-h-screen bg-zinc-50 overflow-x-hidden">
       {/* ── Hero ── */}
       <section className="relative pt-32 pb-24 px-6 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
@@ -477,15 +477,24 @@ export default function AIAgentsPage() {
             {differentiators.map((d, i) => {
               const Icon = d.icon;
               return (
-                <motion.div key={d.title} {...fadeUp(i * 0.08)}>
-                  <Tilt tiltMaxAngleX={7} tiltMaxAngleY={7} perspective={900} scale={1.02} transitionSpeed={500} glareEnable={true} glareMaxOpacity={0.07} glareColor="#facc15" glarePosition="all" className="h-full">
-                  <div className="bg-zinc-900 border border-zinc-700/60 rounded-3xl p-7 h-full relative overflow-hidden group" style={{ transformStyle: "preserve-3d" }}>
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-[2px] rounded-full bg-gradient-to-r from-yellow-400 to-amber-500" />
-                    <div className="w-10 h-10 rounded-xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center mb-5 group-hover:bg-yellow-400/20 transition-colors duration-300" style={{ transform: "translateZ(8px)" }}>
-                      <Icon className="w-5 h-5 text-yellow-400" />
+                <motion.div key={d.title} {...fadeUp(i * 0.08)} className="h-full">
+                  <Tilt tiltMaxAngleX={8} tiltMaxAngleY={8} perspective={900} scale={1.02} transitionSpeed={450} glareEnable={true} glareMaxOpacity={0.07} glareColor="#facc15" glarePosition="all" className="h-full">
+                  <div className="relative bg-zinc-900 border border-zinc-800 rounded-2xl p-8 flex flex-col h-full overflow-hidden group hover:border-zinc-700 hover:shadow-[0_24px_64px_rgba(0,0,0,0.5)] transition-all duration-500" style={{ transformStyle: "preserve-3d" }}>
+                    <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl" />
+                    <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                    <span className="absolute -bottom-4 -right-2 font-calsans text-[120px] leading-none font-extrabold text-white/[0.03] select-none pointer-events-none group-hover:text-white/[0.05] transition-colors duration-500" aria-hidden="true">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div className="flex items-center justify-between mb-10">
+                      <div className="w-12 h-12 rounded-2xl bg-zinc-800 border border-zinc-700/60 flex items-center justify-center group-hover:border-zinc-600 transition-colors duration-300">
+                        <Icon className="w-5 h-5 text-yellow-400" />
+                      </div>
+                      <span className="text-[11px] font-mono font-semibold text-zinc-600 tracking-[0.2em] group-hover:text-zinc-500 transition-colors duration-300">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
                     </div>
-                    <h3 className="font-calsans font-bold text-white mb-3" style={{ transform: "translateZ(6px)" }}>{d.title}</h3>
-                    <p className="text-zinc-400 text-sm leading-relaxed" style={{ transform: "translateZ(4px)" }}>{d.desc}</p>
+                    <h3 className="font-calsans text-2xl text-white mb-3 leading-tight">{d.title}</h3>
+                    <p className="text-zinc-400 text-sm leading-relaxed flex-1">{d.desc}</p>
                   </div>
                   </Tilt>
                 </motion.div>
@@ -512,40 +521,21 @@ export default function AIAgentsPage() {
             {agentLoop.map((step, i) => {
               const Icon = step.icon;
               return (
-                <motion.div key={step.title} {...fadeUp(i * 0.1)}>
-                  <Tilt tiltMaxAngleX={8} tiltMaxAngleY={8} perspective={800} scale={1.03} transitionSpeed={400} glareEnable={true} glareMaxOpacity={0.18} glareColor="#ffffff" glarePosition="top" className="h-full">
-                  <div
-                    className="relative rounded-2xl p-6 h-full text-center overflow-hidden"
-                    style={{
-                      transformStyle: "preserve-3d",
-                      background: "linear-gradient(145deg, rgba(255,255,255,0.82) 0%, rgba(255,255,255,0.52) 100%)",
-                      backdropFilter: "blur(24px)",
-                      WebkitBackdropFilter: "blur(24px)",
-                      border: "1px solid rgba(255,255,255,0.75)",
-                      boxShadow: "0 8px 32px rgba(0,0,0,0.07), 0 1.5px 6px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.95), inset 0 -1px 0 rgba(0,0,0,0.03)",
-                    }}
-                  >
-                    {/* Inner specular shimmer */}
-                    <div className="absolute top-0 left-0 w-3/4 h-px bg-gradient-to-r from-white/90 via-white/60 to-transparent" />
-                    <motion.div
-                      className="w-10 h-10 rounded-full bg-yellow-400 flex items-center justify-center mx-auto mb-4"
-                      style={{ transform: "translateZ(8px)", boxShadow: "0 4px 16px rgba(250,204,21,0.45)" }}
-                      animate={{ boxShadow: [
-                        "0 4px 16px rgba(250,204,21,0.35)",
-                        "0 4px 24px rgba(250,204,21,0.65)",
-                        "0 4px 16px rgba(250,204,21,0.35)",
-                      ]}}
-                      transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 }}
-                    >
-                      <Icon className="w-5 h-5 text-zinc-900" />
-                    </motion.div>
-                    <h3 className="font-semibold text-zinc-900 text-sm mb-2" style={{ transform: "translateZ(6px)" }}>{step.title}</h3>
-                    <p className="text-zinc-500 text-xs leading-relaxed" style={{ transform: "translateZ(4px)" }}>{step.desc}</p>
-                    {i < agentLoop.length - 1 && (
-                      <div className="hidden lg:block absolute top-10 -right-2.5 w-5 h-px bg-zinc-300/60" />
-                    )}
+                <motion.div key={step.title} {...fadeUp(i * 0.1)} className="h-full">
+                  <div className="relative bg-white border border-zinc-100 rounded-2xl p-6 h-full overflow-hidden hover:border-zinc-200 hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] transition-all duration-300 group">
+                    <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-zinc-200 to-transparent" />
+                    <span className="absolute -bottom-3 -right-1 font-calsans text-[100px] leading-none font-extrabold text-zinc-900/[0.04] select-none pointer-events-none group-hover:text-zinc-900/[0.07] transition-colors duration-500" aria-hidden="true">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-[11px] font-mono font-semibold text-zinc-300 tracking-[0.2em] mb-5 block">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div className="w-9 h-9 rounded-xl bg-zinc-100 border border-zinc-200 flex items-center justify-center mb-4 group-hover:border-zinc-300 transition-colors duration-200">
+                      <Icon className="w-4 h-4 text-yellow-500" />
+                    </div>
+                    <h3 className="font-calsans text-base font-bold text-zinc-900 mb-2 leading-snug">{step.title}</h3>
+                    <p className="text-zinc-400 text-xs leading-relaxed">{step.desc}</p>
                   </div>
-                  </Tilt>
                 </motion.div>
               );
             })}
@@ -733,7 +723,7 @@ export default function AIAgentsPage() {
       <section className="py-24 px-6 border-t border-zinc-100">
         <div className="max-w-3xl mx-auto">
           <motion.div {...fadeUp(0)}>
-            <div className="relative bg-zinc-900 rounded-3xl p-10 md:p-14 text-center overflow-hidden">
+            <div className="relative bg-zinc-900 rounded-3xl p-6 sm:p-10 md:p-14 text-center overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/[0.08] to-transparent pointer-events-none" />
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-[2px] rounded-full bg-gradient-to-r from-yellow-400 to-amber-500" />
               <p className="text-yellow-400 text-xs font-semibold tracking-[0.25em] uppercase mb-4">{ui.ctaLabel}</p>

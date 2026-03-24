@@ -1,10 +1,13 @@
 import { HeroSection } from "@/components/sections/HeroSection";
+import { TrustedBySection } from "@/components/sections/TrustedBySection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { ZettelFlowSection } from "@/components/sections/ZettelFlowSection";
 import { AIAgentsSection } from "@/components/sections/AIAgentsSection";
 import { WhyUsSection } from "@/components/sections/WhyUsSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
+import { FAQSection } from "@/components/sections/FAQSection";
 import { LeadCaptureSection } from "@/components/sections/LeadCaptureSection";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -60,22 +63,63 @@ export default function Home() {
       </div>
 
       <HeroSection />
+      <TrustedBySection />
       <ServicesSection />
       <ZettelFlowSection />
       <AIAgentsSection />
       <WhyUsSection />
       <TestimonialsSection />
+      <FAQSection />
       <LeadCaptureSection />
 
       {/* ─── Footer ─── */}
-      <footer className="border-t border-zinc-100 py-8 px-6">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <span className="font-lexend text-sm font-bold tracking-[0.06em] text-zinc-400">
-            VRAT<span className="text-yellow-500">VAR</span>
-          </span>
-          <p className="text-xs text-zinc-400">
-            &copy; {new Date().getFullYear()} VRATVAR. Všetky práva vyhradené.
-          </p>
+      <footer className="border-t border-zinc-100 bg-white pt-14 pb-8 px-6">
+        <div className="max-w-6xl mx-auto">
+          {/* Top grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 mb-12">
+            {/* Brand */}
+            <div className="col-span-2 sm:col-span-1">
+              <span className="font-lexend text-base font-bold tracking-[0.06em] text-zinc-900 block mb-3">
+                VRAT<span className="text-yellow-500">VAR</span>
+              </span>
+              <p className="text-xs text-zinc-400 leading-relaxed max-w-[180px]">
+                AI-powered B2B automatizácia pre DACH región.
+              </p>
+            </div>
+            {/* Products */}
+            <div>
+              <p className="text-xs font-semibold text-zinc-900 tracking-[0.15em] uppercase mb-4">Produkty</p>
+              <ul className="space-y-2.5">
+                <li><Link href="/zettelflow" className="text-xs text-zinc-400 hover:text-zinc-700 transition-colors duration-200">ZettelFlow</Link></li>
+                <li><Link href="/ai-agents" className="text-xs text-zinc-400 hover:text-zinc-700 transition-colors duration-200">AI Agenti</Link></li>
+                <li><Link href="/custom-applications" className="text-xs text-zinc-400 hover:text-zinc-700 transition-colors duration-200">Custom Apps</Link></li>
+              </ul>
+            </div>
+            {/* Company */}
+            <div>
+              <p className="text-xs font-semibold text-zinc-900 tracking-[0.15em] uppercase mb-4">Spoločnosť</p>
+              <ul className="space-y-2.5">
+                <li><Link href="/#why-us" className="text-xs text-zinc-400 hover:text-zinc-700 transition-colors duration-200">O nás</Link></li>
+                <li><Link href="/contact" className="text-xs text-zinc-400 hover:text-zinc-700 transition-colors duration-200">Kontakt</Link></li>
+              </ul>
+            </div>
+            {/* Legal */}
+            <div>
+              <p className="text-xs font-semibold text-zinc-900 tracking-[0.15em] uppercase mb-4">Právne</p>
+              <ul className="space-y-2.5">
+                <li><Link href="/privacy" className="text-xs text-zinc-400 hover:text-zinc-700 transition-colors duration-200">Ochrana súkromia</Link></li>
+                <li><Link href="/terms" className="text-xs text-zinc-400 hover:text-zinc-700 transition-colors duration-200">Podmienky použitia</Link></li>
+                <li><Link href="/imprint" className="text-xs text-zinc-400 hover:text-zinc-700 transition-colors duration-200">Impressum</Link></li>
+              </ul>
+            </div>
+          </div>
+          {/* Bottom bar */}
+          <div className="border-t border-zinc-100 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <p className="text-xs text-zinc-400">
+              &copy; {new Date().getFullYear()} VRATVAR s.r.o. Všetky práva vyhradené.
+            </p>
+            <p className="text-xs text-zinc-400">Bratislava · Wien · Praha</p>
+          </div>
         </div>
       </footer>
     </main>

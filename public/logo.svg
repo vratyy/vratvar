@@ -1,0 +1,10 @@
+<svg viewBox="0 0 64 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Black V: left arm -->
+  <path d="M0 0 L13 0 L28 56 L15 56 Z" fill="#18181B"/>
+  <!-- Black V: right arm -->
+  <path d="M51 0 L64 0 L49 56 L36 56 Z" fill="#18181B"/>
+  <!-- Yellow W: left arm (overlaps V right arm) -->
+  <path d="M36 0 L49 0 L35 56 L22 56 Z" fill="#EAB308"/>
+  <!-- Yellow W: right arm (slash with bottom hook) -->
+  <path d="M51 0 L64 0 L58 30 L64 56 L52 56 L46 30 Z" fill="#EAB308"/>
+</svg>
